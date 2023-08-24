@@ -14,7 +14,8 @@ void exec_command(char *opcode, stack_t **stack, unsigned int line_number)
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint}
+		{"pint", pint},
+		{"pop", pop}
 	};
 
 	for (; i < sizeof(opcodes) / sizeof(opcodes[0]); i++)
