@@ -37,6 +37,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern instruction_t opcodes[];
+int number;
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void exec_command(char *opcode, stack_t **stack, unsigned int line_number);

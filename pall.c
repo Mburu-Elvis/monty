@@ -3,6 +3,7 @@
 /**
  * pall - function to print all the elements in a stack
  * @stack: the stack whose elements are to be printed
+ * @line_number: the line number in the monty file
  *
  * Return: nothing
  */
