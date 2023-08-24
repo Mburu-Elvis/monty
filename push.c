@@ -9,19 +9,20 @@
  */
 void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	extern int number;
+	stack_t *new = malloc(sizeof(stack_t)), *temp  = *stack;
 
 	if (new != NULL)
 	{
 		new->n = number;
 		new->prev = NULL;
 		new->next = NULL;
-		if (*stack == NULL)
+		if (temp == NULL)
 			*stack = new;
 		else
 		{
-			new->prev = *stack;
-			(*stack)->next = new;
+			new->prev = temp;
+			temp->next = new;
 			*stack = new;
 		}
 	}
