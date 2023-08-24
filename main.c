@@ -12,20 +12,25 @@ int main(int argc, char **argv)
 {
 	FILE *fd = fopen(argv[1], "r");
 	char line[50];
-	char *opcode = NULL, *temp;
+	char *opcode = NULL;
 	stack_t *stack = NULL, *stack_temp;
 	unsigned int line_number = 0;
 
 	if (argc != 2)
-		return (EXIT_FAILURE);
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	if (fd == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 	while (fgets(line, sizeof(line), fd) != NULL)
 	{
 		opcode = strtok(line, " \r\n");
-		temp = strtok(NULL, " \r\n");
-		if (temp != NULL)
-			number = atoi(temp);
-		exec_command(opcode, &stack, line_number);
 		line_number++;
+		exec_command(opcode, &stack, line_number);
 	}
 	fclose(fd);
 	while (stack != NULL)

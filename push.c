@@ -7,12 +7,19 @@
  *
  * Return: nothing
  */
-void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
+	char *num = strtok(NULL, " \t\r\n");
 	stack_t *new = malloc(sizeof(stack_t)), *temp  = *stack;
 
 	if (new != NULL)
 	{
+		if (is_number(num) == 0)
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		number = atoi(num);
 		new->n = number;
 		new->prev = NULL;
 		new->next = NULL;
@@ -27,7 +34,24 @@ void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	}
 	else
 	{
+		fprintf(stderr, "Error: malloc failed\n");
 		free(new);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * is_number - checks for a number
+ * @str: string to be checked
+ * Return: 1 on Success else 0
+ */
+int is_number(const char *str)
+{
+	while (*str != '\0')
+	{
+		if (!isdigit(*str) && (*str != '-' && *str != '+'))
+			return (0);
+		str++;
+	}
+	return (1);
 }

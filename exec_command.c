@@ -21,6 +21,12 @@ void exec_command(char *opcode, stack_t **stack, unsigned int line_number)
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
 		{
 			opcodes[i].f(stack, line_number);
+			break;
 		}
+	}
+	if (i == sizeof(opcodes) / sizeof(opcodes[0]))
+	{
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
 	}
 }
