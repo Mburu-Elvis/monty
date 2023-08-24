@@ -26,5 +26,8 @@ void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 		}
 	}
 	else
+	{
+		free(new);
 		exit(EXIT_FAILURE);
+	}
 }
