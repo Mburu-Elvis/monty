@@ -9,7 +9,6 @@
  */
 void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	extern int number;
 	stack_t *new = malloc(sizeof(stack_t)), *temp  = *stack;
 
 	if (new != NULL)
