@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "monty.h"
 
+extern int number;
 /**
  * main - the main entry point of the program
  * @argc: number of arguments passed to the function
@@ -22,8 +23,8 @@ int main(int argc, char **argv)
 	{
 		opcode = strtok(line, " ");
 		temp = strtok(NULL, " ");
-		if (opcode != NULL)
-			(*stack)->n = atoi(temp);
+		if (temp != NULL)
+			number = atoi(temp);
 		exec_command(opcode, stack, line_number);
 		line_number++;
 	}	
