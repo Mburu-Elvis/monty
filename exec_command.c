@@ -18,7 +18,7 @@ void exec_command(char *opcode, stack_t **stack, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop}
+		{"nop", nop}, {"sub", sub}
 	};
 
 	for (; i < sizeof(opcodes) / sizeof(opcodes[0]); i++)
